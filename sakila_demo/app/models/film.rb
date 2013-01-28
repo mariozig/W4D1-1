@@ -16,4 +16,20 @@ class Film < ActiveRecord::Base
       .group("film_id")
       .order("number_of_actors DESC")
   end
+
+  def self.most_stores
+    self
+      .select("film.*, COUNT(DISTINCT store.store_id) AS number_of_stores")
+      .joins(:stores)
+      .group("film_id")
+      .order("number_of_stores DESC")
+  end
+
+  def self.most_inventory
+    self
+      .select("film.*, COUNT(DISTINCT inventory_id) AS number_of_inventories")
+      .joins(:inventories)
+      .group("film_id")
+      .order("number_of_inventories DESC")
+  end
 end
