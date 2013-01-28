@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   has_many :films, :through => :film_categories
   has_many :actors, :through => :films
 
-  set_table_name(:category)
+  set_table_name :category
 
   def self.most_popular
     self

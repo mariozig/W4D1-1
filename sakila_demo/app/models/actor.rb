@@ -4,8 +4,8 @@ class Actor < ActiveRecord::Base
   has_many :films, :through => :film_actor
   has_many :categories, :through => :films
 
-  set_table_name(:actor)
-  set_primary_key(:actor_id)
+  set_table_name :actor
+  set_primary_key :actor_id
 
   def self.most_films
     self

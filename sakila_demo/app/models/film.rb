@@ -3,9 +3,11 @@ class Film < ActiveRecord::Base
   has_many :actors, :through => :film_actor
   has_one :film_category
   has_one :category, :through => :film_category
+  has_many :inventories
+  has_many :stores, :through => :inventories
 
-  set_table_name(:film)
-  set_primary_key(:film_id)
+  set_table_name :film
+  set_primary_key :film_id
 
   def self.most_actors
     self
