@@ -5,6 +5,7 @@ class Film < ActiveRecord::Base
   has_one :category, :through => :film_category
   has_many :inventories
   has_many :stores, :through => :inventories
+  has_many :rentals, :through => :inventories
 
   set_table_name :film
   set_primary_key :film_id
@@ -32,4 +33,14 @@ class Film < ActiveRecord::Base
       .group("film_id")
       .order("number_of_inventories DESC")
   end
+
+  def self.most_watched
+    self
+      .select("film.title, COUNT(rental_id) AS number_of_views")
+      .joins(:rentals)
+      .group("film.film_id")
+      .order("number_of_views DESC")
+  end
 end
+
+
