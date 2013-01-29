@@ -22,5 +22,4 @@ class Actor < ActiveRecord::Base
       .group(:actor_id)
       .order("career_length DESC")
   end
-
 end

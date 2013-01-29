@@ -4,6 +4,7 @@ class Store < ActiveRecord::Base
 
   has_many :inventories
   has_many :films, :through => :inventories
+  has_many :rentals, :through => :inventories
 
   belongs_to :address
   has_one :city, :through => :address
